@@ -1,62 +1,284 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!--  uri  -->
 <html>
-  <head>
-    <meta name="viewport" content="width=320; user-scalable=no" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>Minimal AppLaud App</title>
-    <!-- Fulles d'estil <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-->
-	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.css">
-	<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.css">
-	<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.2.css">
+<head>
+<meta name="viewport" content="width=320; user-scalable=no" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<title>ICD-9</title>
 
-	 
-	  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
-	  <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.3.2.js"></script>
-	  <script type="text/javascript" charset="utf-8">
-      
-        var onDeviceReady = function() {
-            document.getElementById("devready").innerHTML = "OnDeviceReady fired.";
-        };
+<!-- ----------------------------------- CSS ------------------------------------- -->
 
-        function init() {
-            document.addEventListener("deviceready", onDeviceReady, true);
-        }   
-</script>  
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.3.2.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.3.2.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.3.2.css">
+<link rel="stylesheet" type="text/css" href="css/app.css">
 
-  </head>
-  <body id="stage" class="theme">
-	<div  data-role="page" id="main"> 
-	<div data-role="header">
-	  <img border="0" src="images/home.png" alt="" style="float:left;display:inline"/>
-      <h2>CIM-09-MC mobil</h2>
-   
-</div>
-	
-	 
-		<div  data-role="content">
-		 <img border="0" src="images/icd9codeslogo.png" />
-		<ul data-role="listview">
-			<li><a href="malalties.html">Diagnóstics</a></li>
-			<li><a href="procedimentS1.html">Procediments</a></li>
-			<li><a href="bmw.html">Codis V</a></li>
-			<li><a href="bmw.html">Codis E</a></li>
-			<li><a href="bmw.html">Codis M</a></li>
-			<li><a href="bmw.html">Codis Freqüents</a></li>
-			<li><a href="bmw.html">Codis Favorits</a></li>
-						
-		</ul>
-		
+<!-- ----------------------------------- JS ------------------------------------- -->
+
+<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.3.2.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/call.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/form.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/JSON.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/req.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/resp.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/Util.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+	var onDeviceReady = function() {
+		$.mobile.allowCrossDomainPages = true;
+	};
+
+	function init() {
+		document.addEventListener("deviceready", onDeviceReady, true);
+	}
+</script>
+
+</head>
+<!-- ----------------------------------------------------------------------------------- -->
+<!-- --------------------------------- MAIN PAGE --------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------- -->
+<body id="stage" class="theme" onload="init()">
+
+	<div data-role="page" id="main">
+		<div data-role="header" data-position="fixed"  data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li style="width: 5%"><img src="images/home.png"
+						style="margin: 5px; width: 100%; height: auto; max-width: 39px;min-width:20px" />
+					</li>
+					<li style="width: 90%; text-align: center;padding-top: 5px;">CIM-09-MC
+							mòbil</li>
+					<li style="width: 5%">&nbsp;</li>
+				</ul>
+			</div>
 		</div>
-			 
-		<div data-role="footer">
-	  <img border="0" src="images/info.png" alt="" style="float:left;display:inline"/>
-      <h2>CIM-09-MC mobil</h2>
-   
-</div>
-		
-		 
-	</div> 
-	
-  </body>
+		<div data-role="content">
+			<img src="images/icd9codeslogo.png"
+				style="width: 100%; height: auto; margin-bottom: 20px" />
+			<ul data-role="listview">
+				<li><a href="#diagnostics" data-transition="slide">Diagnóstics</a></li>
+				<li><a href="#procediments" data-transition="slide">Procediments</a></li>
+				<li><a href="javascript:searchV()">Codis V</a></li>
+				<li><a href="javascript:searchE()">Codis E</a></li>
+				<li><a href="javascript:searchM()">Codis M</a></li>
+				<li><a href="javascript:searchFreq()">Codis Freqüents</a></li>
+				<li><a href="javascript:searchFav()">Codis Favorits</a></li>
+			</ul>
+		</div>
+		<div data-role="footer" data-position="fixed"  data-tap-toggle="false">
+			<div data-role="navbar">
+					<ul>
+						<li style="width: 5%"></li>
+						<li style="width: 90%; text-align: center">CIM-09-MC mòbil</li>
+						<li style="width: 5%">&nbsp;</li>
+					</ul>
+			</div>
+		</div>
+	</div>
+
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+<!-- ---------------------------------			PAGES			------------------------------------ -->
+<!-- ----------------------------------------------------------------------------------------------- -->
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+<div data-role="page" id="diagnostics">
+		<div data-role="header" data-position="fixed"  data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li style="width: 5%">
+						<img src="images/home.png" style="margin: 5px; width: 100%; height: auto; max-width: 39px;min-width:20px" class="toMain"/>
+					</li>
+					<li style="width: 90%; text-align: center;padding-top: 5px;">CIM-09-MC
+							mòbil</li>
+					<li style="width: 5%">&nbsp;</li>
+				</ul>
+			</div>
+		</div>
+		<!-- ------- Content--------- -->
+		<div data-role="content">
+			<div class=ui-grid-b>
+			      <div class="ui-block-b odd">
+			      		<img border="1" src="images/pulmons1.png" class="search_img" dtype="pulmons" minLimit="" maxLimit=""/> 
+			      </div>
+			      <div class="ui-block-c even"><img  src="images/embaras.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-c odd"><img  src="images/embaras.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-a even"><img  src="images/ronyons.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-b odd"><img  src="images/fetge.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-c even"><img  src="images/odontologia.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-a odd"><img  src="images/intestins.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-b even"><img  src="images/mental.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-c odd"><img  src="images/otorrino.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-a even"><img  src="images/estomatologia.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-b odd"><img  src="images/cor1.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-c even"><img  src="images/cor1.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-a odd"><img  src="images/cor1.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-b even"><img  src="images/cor1.png" class="search_img_diagnostics"/> </div>
+			      <div class="ui-block-c odd"><img  src="images/cor1.png" class="search_img_diagnostics"/> </div>
+		    </div>
+		</div>
+		<!-- ------- End Content----- -->
+		<div data-role="footer" data-position="fixed"  data-tap-toggle="false" >
+			<div data-role="navbar">
+					<ul>
+						<li style="width: 5%"></li>
+						<li style="width: 90%; text-align: center">CIM-09-MC mòbil</li>
+						<li style="width: 5%">&nbsp;</li>
+					</ul>
+			</div>
+		</div>
+	</div>
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+<div data-role="page" id="procediments">
+		<div data-role="header" data-position="fixed"  data-tap-toggle="false" > 
+			<div data-role="navbar">
+				<ul>
+					<li style="width: 5%">
+						<img src="images/home.png" style="margin: 5px; width: 100%; height: auto; max-width: 39px;min-width:20px" class="toMain"/>
+					</li>
+					<li style="width: 90%; text-align: center;padding-top: 5px;">CIM-09-MC
+							mòbil</li>
+					<li style="width: 5%">&nbsp;</li>
+				</ul>
+			</div>
+		</div>
+		<!-- ------- Content--------- -->
+		<div data-role="content">
+		    <div class=ui-grid-b>
+		      <div class="ui-block-a odd"><a href="muscular.html" ><img border="1" src="images/muscular.png" class="search_img_procediments"/></a> </div>
+		      <div class="ui-block-b odd"><img border="1" src="images/digestiu.png" class="search_img_procediments"/> </div>
+		      <div class="ui-block-c odd"><img border="1" src="images/respiratori.png" class="search_img_procediments"/> </div>
+		      <div class="ui-block-a even"><img border="1" src="images/circulatori.png" class="search_img_procediments"/> </div>
+		      <div class="ui-block-b even"><img border="1" src="images/linfatic.png" class="search_img_procediments"/> </div>
+		      <div class="ui-block-c even"><img border="1" src="images/nervios.png" class="search_img_procediments"/> </div>
+		      <div class="ui-block-a odd"><img border="1" src="images/reproductor.png" class="search_img_procediments"/> </div>
+		      <div class="ui-block-b odd"><img border="1" src="images/hormonal.png" class="search_img_procediments"/> </div>
+		       
+   			 </div>
+		</div>
+		<!-- ------- End Content----- -->
+		<div data-role="footer" data-position="fixed"  data-tap-toggle="false">
+			<div data-role="navbar">
+					<ul>
+						<li style="width: 5%"></li>
+						<li style="width: 90%; text-align: center">CIM-09-MC mòbil</li>
+						<li style="width: 5%">&nbsp;</li>
+					</ul>
+			</div>
+		</div>
+	</div>
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+<div data-role="page" id="codisFrequents">
+		<div data-role="header" data-position="fixed"  data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li style="width: 5%">
+						<a href="#main">
+							<img src="images/home.png" style="margin: 5px; width: 100%; height: auto; max-width: 39px;min-width:20px" class="toMain"/>
+						</a>
+					</li>
+					<li style="width: 90%; text-align: center;padding-top: 5px;">CIM-09-MC
+							mòbil</li>
+					<li style="width: 5%">&nbsp;</li>
+				</ul>
+			</div>
+		</div>
+		<!-- ------- Content--------- -->
+		<div data-role="content">
+
+		</div>
+		<!-- ------- End Content----- -->
+		<div data-role="footer" data-position="fixed"  data-tap-toggle="false">
+			<div data-role="navbar">
+					<ul>
+						<li style="width: 5%"></li>
+						<li style="width: 90%; text-align: center">CIM-09-MC mòbil</li>
+						<li style="width: 5%">&nbsp;</li>
+					</ul>
+			</div>
+		</div>
+	</div>
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+<div data-role="page" id="favortis">
+		<div data-role="header" data-position="fixed"  data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li style="width: 5%">
+					<a href="#main">
+						<img src="images/home.png" style="margin: 5px; width: 100%; height: auto; max-width: 39px;min-width:20px" class="toMain"/>
+					</a>
+					</li>
+					<li style="width: 90%; text-align: center;padding-top: 5px;">CIM-09-MC
+							mòbil</li>
+					<li style="width: 5%">&nbsp;</li>
+				</ul>
+			</div>
+		</div>
+		<!-- ------- Content--------- -->
+		<div data-role="content">
+
+		</div>
+		<!-- ------- End Content----- -->
+		<div data-role="footer" data-position="fixed"  data-tap-toggle="false">
+			<div data-role="navbar">
+					<ul>
+						<li style="width: 5%"></li>
+						<li style="width: 90%; text-align: center">CIM-09-MC mòbil</li>
+						<li style="width: 5%">&nbsp;</li>
+					</ul>
+			</div>
+		</div>
+	</div>
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------- -->
+<div data-role="page" id="search">
+		<div data-role="header" data-position="fixed"  data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li style="width: 5%"><img src="images/home.png"
+						style="margin: 5px; width: 100%; height: auto; max-width: 39px;min-width:20px" class="toMain"/>
+					</li>
+					<li style="width: 90%; text-align: center;padding-top: 5px;">CIM-09-MC mòbil</li>
+					<li style="width: 5%">&nbsp;</li>
+				</ul>
+			</div>
+		</div>
+		<!-- ------- Content--------- -->
+		<div data-role="content">
+			<h1>Buscar</h1>
+			<span id="titleSearch"></span>
+	   			<input type="search" name="search" id="searchInput" data-corners="false"/>
+	   			<button data-role="button" id="searchButon" data-corners="false"> Buscar</button>
+   			<div style="margin:30px 10px 0 10px">
+  				<ul data-role='listview' id="contentSearch">
+  				</ul>
+   			</div>
+		</div>
+		<!-- ------- End Content----- -->
+		<div data-role="footer" data-position="fixed"  data-tap-toggle="false">
+			<div data-role="navbar">
+					<ul>
+						<li style="width: 5%"></li>
+						<li style="width: 90%; text-align: center">CIM-09-MC mòbil</li>
+						<li style="width: 5%">&nbsp;</li>
+					</ul>
+			</div>
+		</div>
+	</div>
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+</body>
 </html>

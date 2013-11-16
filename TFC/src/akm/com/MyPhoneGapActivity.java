@@ -4,6 +4,7 @@ import org.apache.cordova.DroidGap;
 
 import android.os.Bundle;
 
+
 public class MyPhoneGapActivity extends DroidGap {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
