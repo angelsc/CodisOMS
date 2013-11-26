@@ -46,9 +46,6 @@
 		<div data-role="header" data-position="fixed"  data-tap-toggle="false">
 			<div data-role="navbar">
 				<ul>
-					<li style="width: 5%"><img src="images/home.png"
-						style="margin: 5px; width: 100%; height: auto; max-width: 39px;min-width:20px" />
-					</li>
 					<li style="width: 90%; text-align: center;padding-top: 5px;">CIM-09-MC
 							mòbil</li>
 					<li style="width: 5%">&nbsp;</li>
@@ -57,15 +54,17 @@
 		</div>
 		<div data-role="content">
 			<img src="images/icd9codeslogo.png"
-				style="width: 100%; height: auto; margin-bottom: 20px" />
-			<ul data-role="listview">
-				<li><a href="#diagnostics" data-transition="slide">Diagnóstics</a></li>
+				style="width: 100%; height: auto; margin-bottom:40px" />
+			
+			<ul data-role="listview" data-theme="b">
+				<li><a href="#diagnostics" data-transition="slide" >Diagnóstics</a></li>
 				<li><a href="#procediments" data-transition="slide">Procediments</a></li>
 				<li><a href="javascript:searchV()">Codis V</a></li>
 				<li><a href="javascript:searchE()">Codis E</a></li>
 				<li><a href="javascript:searchM()">Codis M</a></li>
-				<li><a href="javascript:searchFreq()">Codis Freqüents</a></li>
-				<li><a href="javascript:searchFav()">Codis Favorits</a></li>
+				<!-- <li><a href="javascript:searchFreq()">codisFreqüents</a></li> codisFrequents  -->	
+				<li><a href="#codisFrequents" data-transition="slide" >Codis Freqüents</a></li>
+				<li><a href="javascript:getFavorites()">Codis Favorits</a></li>
 			</ul>
 		</div>
 		<div data-role="footer" data-position="fixed"  data-tap-toggle="false">
@@ -101,35 +100,40 @@
 		<!-- ------- Content--------- -->
 		<div data-role="content">
 			<div class=ui-grid-b>
-			      <div class="ui-block-b odd"><img src="images/pulmons1.png" class="search_img_diagnostics" titleSearch="M. infeccioses i parasitàries" subtitleSearch="" dtype="1"/> </div>
-			      <div class="ui-block-c even"><img  src="images/embaras.png" class="search_img_diagnostics" titleSearch="Neoplàsies" subtitleSearch="" dtype="2"/> </div>
-			      <div class="ui-block-c odd"><img  src="images/embaras.png" class="search_img_diagnostics" titleSearch="M. endocrines,nutricionals i metabòliques," subtitleSearch="" dtype="3"/> </div>
-			      <div class="ui-block-a even"><img  src="images/ronyons.png" class="search_img_diagnostics" titleSearch="M. de la sang i òrgans hematopoètics" subtitleSearch="" dtype="4"/> </div>
-			      <div class="ui-block-b odd"><img  src="images/fetge.png" class="search_img_diagnostics" titleSearch="Trastorns mentals " subtitleSearch="" dtype="5"/> </div>
-			      <div class="ui-block-c even"><img  src="images/odontologia.png" class="search_img_diagnostics" titleSearch="pulmons" subtitleSearch="" dtype="6"/> </div>
-			      <div class="ui-block-a odd"><img  src="images/intestins.png" class="search_img_diagnostics" titleSearch="pulmons" subtitleSearch="" dtype="7"/> </div>
-			      <div class="ui-block-b even"><img  src="images/mental.png" class="search_img_diagnostics" titleSearch="pulmons" subtitleSearch="" dtype="8"/> </div>
-			      <div class="ui-block-c odd"><img  src="images/otorrino.png" class="search_img_diagnostics" titleSearch="pulmons" subtitleSearch="" dtype="9"/> </div>
-			      <div class="ui-block-a even"><img  src="images/estomatologia.png" class="search_img_diagnostics" titleSearch="pulmons" subtitleSearch="" dtype="10"/> </div>
-			      <div class="ui-block-b odd"><img  src="images/cor1.png" class="search_img_diagnostics" titleSearch="pulmons" subtitleSearch="" dtype="11"/> </div>
-			      <div class="ui-block-c even"><img  src="images/cor1.png" class="search_img_diagnostics" titleSearch="pulmons" subtitleSearch="" dtype="12"/> </div>
-			      <div class="ui-block-a odd"><img  src="images/cor1.png" class="search_img_diagnostics" titleSearch="pulmons" subtitleSearch="" dtype="13"/> </div>
-			      <div class="ui-block-b even"><img  src="images/cor1.png" class="search_img_diagnostics" titleSearch="pulmons" subtitleSearch="" dtype="14"/> </div>
-			      <div class="ui-block-c odd"><img  src="images/cor1.png" class="search_img_diagnostics" titleSearch="pulmons" subtitleSearch="" dtype="15"/> </div>
-			      <div class="ui-block-b even"><img  src="images/cor1.png" class="search_img_diagnostics" titleSearch="pulmons" subtitleSearch="" dtype="16"/> </div>
-			      <div class="ui-block-c odd"><img  src="images/cor1.png" class="search_img_diagnostics" titleSearch="pulmons" subtitleSearch="" dtype="17"/> </div>
+			      <div class="ui-block-b odd"><img src="images/1.Malalties infeccioses i parasites-01.png" class="search_img_diagnostics" titleSearch="M. infeccioses i parasitàries" subtitleSearch="(001-139)" dtype="1"/> </div>
+			      <div class="ui-block-c even"><img  src="images/2. Neoplasies-01.png" class="search_img_diagnostics" titleSearch="Neoplàsies" subtitleSearch="(140-239)" dtype="2"/> </div>
+			      <div class="ui-block-c odd"><img  src="images/3.Malalties endocrines-01.png" class="search_img_diagnostics" titleSearch="M. endocrines,nutricionals i metabòliques," subtitleSearch="(140-239)" dtype="3"/> </div>
+			      <div class="ui-block-a even"><img  src="images/4.Malalties organs hematopoetics-01.png" class="search_img_diagnostics" titleSearch="M. de la sang i òrgans hematopoètics" subtitleSearch="(280-289)" dtype="4"/> </div>
+			      <div class="ui-block-b odd"><img  src="images/5.Transtorns mentals.png" class="search_img_diagnostics" titleSearch="Trastorns mentals " subtitleSearch="(290-319)" dtype="5"/> </div>
+			      <div class="ui-block-c even"><img  src="images/6.Sistema nervios -01.png" class="search_img_diagnostics" titleSearch="Malalties del sistema nerviós i els òrgans dels sentits" subtitleSearch="(320-389)" dtype="6"/> </div>
+			      <div class="ui-block-a odd"><img  src="images/7.Aparell circulatori-01.png" class="search_img_diagnostics" titleSearch="Malalties de l’aparell circulatori" subtitleSearch="(390-459)" dtype="7"/> </div>
+			      <div class="ui-block-b even"><img  src="images/8.Aparell respiratori-01.png" class="search_img_diagnostics" titleSearch="Malalties de l’aparell respiratori" subtitleSearch="(460-519)" dtype="8"/> </div>
+			      <div class="ui-block-c odd"><img  src="images/9.Aparell digestiu-01.png" class="search_img_diagnostics" titleSearch="Malalties de l’aparell digestiu" subtitleSearch="(520-579)" dtype="9"/> </div>
+			      <div class="ui-block-a even"><img  src="images/10.Aparell genitourinari.png" class="search_img_diagnostics" titleSearch=" Malalties de l’aparell genitourinari" subtitleSearch="(580-629) " dtype="10"/> </div>
+			      <div class="ui-block-b odd"><img  src="images/11. Embaras-01.png" class="search_img_diagnostics" titleSearch="Complicacions de l’embaràs, el part i el puerperi" subtitleSearch="(630-679)" dtype="11"/> </div>
+			      <div class="ui-block-c even"><img  src="images/12.Malalties de la pell-01.png" class="search_img_diagnostics" titleSearch="M. de la pell i el teixit subcutani" subtitleSearch="(680-709)" dtype="12"/> </div>
+			      <div class="ui-block-a odd"><img  src="images/13.Malalties sisitema musculoesqueletic-01.png" class="search_img_diagnostics" titleSearch="M.Sistema musculoesquelètic i el teixit connectiu" subtitleSearch="(710-739) " dtype="13"/> </div>
+			      <div class="ui-block-b even"><img  src="images/14.Anomalies congenites-01.png" class="search_img_diagnostics" titleSearch="Anomalies congènites" subtitleSearch="(740-759)" dtype="14"/> </div>
+			      <div class="ui-block-c odd"><img  src="images/15.Afeccions periode parinatal-01.png" class="search_img_diagnostics" titleSearch="Afeccions originades en el període perinatal" subtitleSearch="(760-779)" dtype="15"/> </div>
+			      <div class="ui-block-b even"><img  src="images/16. Simptomas, signes mal definides-01.png" class="search_img_diagnostics" titleSearch="Símptomes, signes i afeccions mal definides" subtitleSearch="(780-799)" dtype="16"/> </div>
+			      <div class="ui-block-c odd"><img  src="images/17.Lesions i intoccicacions-01.png" class="search_img_diagnostics" titleSearch="Lesions i intoxicacions" subtitleSearch="(800-999)" dtype="17"/> </div>
 		    </div>
 		</div>
 		<!-- ------- End Content----- -->
-		<div data-role="footer" data-position="fixed"  data-tap-toggle="false" >
-			<div data-role="navbar">
-					<ul>
-						<li style="width: 5%"></li>
-						<li style="width: 90%; text-align: center">CIM-09-MC mòbil</li>
-						<li style="width: 5%">&nbsp;</li>
-					</ul>
+		<div data-role="footer"  data-position="fixed"  data-tap-toggle="false">		
+		<div data-role="navbar">
+		<ul>
+		<li style="width: 5%">
+						<img src="images/back.png" style="margin: 5px; width: 100%; height: auto; max-width: 39px;min-width:20px" class="toMain"/>
+					</li>
+		
+			<!--<li><a href="#main"><img src="images/back.png" data-transition="slide"/></a></li> 
+			<li><a href="#">Two</a></li> 
+			<li><a href="#">Three</a></li>-->
+		</ul>
+	</div>
+	
 			</div>
-		</div>
 	</div>
 
 <!-- ----------------------------------------------------------------------------------------------- -->
@@ -151,23 +155,24 @@
 		<!-- ------- Content--------- -->
 		<div data-role="content">
 		    <div class=ui-grid-b>
-		      <div class="ui-block-a odd"><img src="images/muscular.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="20"/></div>
-		      <div class="ui-block-b even"><img src="images/digestiu.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="21"/> </div>
-		      <div class="ui-block-c odd"><img  src="images/respiratori.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="22"/> </div>
-		      <div class="ui-block-a even"><img  src="images/circulatori.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="23"/> </div>
-		      <div class="ui-block-b odd"><img  src="images/linfatic.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="24"/> </div>
-		      <div class="ui-block-c even"><img  src="images/nervios.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="25"/> </div>
-		      <div class="ui-block-a odd"><img  src="images/reproductor.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="26"/> </div>
-		      <div class="ui-block-b even"><img  src="images/hormonal.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="27"/> </div>
-		      <div class="ui-block-a odd"><img src="images/muscular.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="28"/></div>
-		      <div class="ui-block-b even"><img src="images/digestiu.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="29"/> </div>
-		      <div class="ui-block-c odd"><img  src="images/respiratori.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="30"/> </div>
-		      <div class="ui-block-a even"><img  src="images/circulatori.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="31"/> </div>
-		      <div class="ui-block-b odd"><img  src="images/linfatic.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="32"/> </div>
-		      <div class="ui-block-c even"><img  src="images/nervios.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="33"/> </div>
-		      <div class="ui-block-a odd"><img  src="images/reproductor.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="34"/> </div>
-		      <div class="ui-block-b even"><img  src="images/hormonal.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="35"/> </div>
-		      <div class="ui-block-b even"><img  src="images/hormonal.png" class="search_img_procediments" titleSearch="pulmons" subtitleSearch="" dtype="36"/> </div>
+		      <div class="ui-block-a odd"><img src="images/0. Procediments no classificats a cap altre lloc-01.png" class="search_img_procediments" titleSearch="Procediments i intervencions no classificats a cap altre lloc" subtitleSearch="" dtype="20"/></div>
+		      <div class="ui-block-b even"><img src="images/1. Op sistema nervios-01.png" class="search_img_procediments" titleSearch="Operacions del sistema nerviós" subtitleSearch="(01-05)" dtype="21"/></div>
+		      <div class="ui-block-c odd"><img  src="images/2. =p del sistema endocri-01.png" class="search_img_procediments" titleSearch="Operacions del sistema endocrí" subtitleSearch="" dtype="22"/></div>
+		     <div class="ui-block-a even"><img  src="images/3. Op de l'ull-01.png" class="search_img_procediments" titleSearch="Operacions de l’ull " subtitleSearch="" dtype="23"/></div> 
+		      <div class="ui-block-b odd"><img  src="images/16. Procediments diagnostics i terepeutics-01.png" class="search_img_procediments" titleSearch=" Miscel·lània d’altres procediments diagnòstics i terapèutics" subtitleSearch="" dtype="37"/> </div>
+		      <div class="ui-block-c even"><img  src="images/4. Op de l'orella-01.png" class="search_img_procediments" titleSearch="Operacions de l’orella" subtitleSearch="" dtype="24"/> </div>
+		      <div class="ui-block-a odd"><img  src="images/5.Op de nas, boca i faringe-01.png" class="search_img_procediments" titleSearch="Operacions de nas, boca i faringe" subtitleSearch="" dtype="25"/> </div>
+		      <div class="ui-block-b even"><img  src="images/8.Aparell respiratori-01.png" class="search_img_procediments" titleSearch=" O. de l’aparell respiratori" subtitleSearch="" dtype="26"/> </div>
+		      <div class="ui-block-c odd"><img src="images/6. Op aparell cardiovascular-01.png" class="search_img_procediments" titleSearch="Operacions de l’aparell cardiovascular" subtitleSearch="" dtype="27"/></div>
+		      <div class="ui-block-a even"><img src="images/7Op sistema hematic i limfatic-01.png" class="search_img_procediments" titleSearch="O. dels sistemes hemàtic i limfàtic" subtitleSearch="" dtype="28"/></div>
+		      <div class="ui-block-b odd"><img  src="images/8.Op aparell digestiu-01.png" class="search_img_procediments" titleSearch="Operacions de l’aparell digestiu " subtitleSearch="" dtype="29"/> </div>
+		      <div class="ui-block-c even"><img  src="images/9. Op aparell urinari-01.png" class="search_img_procediments" titleSearch="Operacions de l’aparell urinari" subtitleSearch="" dtype="30"/> </div>
+		      <div class="ui-block-a odd"><img  src="images/10.Op organs genitals masculins-01.png" class="search_img_procediments" titleSearch="Operacions dels òrgans genitals masculins" subtitleSearch="" dtype="31"/> </div>
+		      <div class="ui-block-b even"><img  src="images/11.=p organs genitals femenins.png" class="search_img_procediments" titleSearch="O. dels òrgans genitals femenins " subtitleSearch="(72-75)" dtype="32"/></div>
+		      <div class="ui-block-c odd"><img  src="images/12.Procediments obtetrics-01.png" class="search_img_procediments" titleSearch="Procediments obstètrics" subtitleSearch=" (76-84)" dtype="38"/></div> 
+		      <div class="ui-block-a even"><img  src="images/13.Op sistema musculoesqueletic.png" class="search_img_procediments" titleSearch="Operacions del sistema musculoesquelètic" subtitleSearch=" (76-84)" dtype="34"/> </div>
+		      <div class="ui-block-b odd"><img  src="images/14. Op intergumentari-01.png" class="search_img_procediments" titleSearch="Operacions del sistema integumentari " subtitleSearch="(85-86)" dtype="35"/> </div>
+		      <div class="ui-block-c even"><img  src="images/16. Procediments diagnostics i terepeutics-01.png" class="search_img_procediments" titleSearch="Miscel·lània de procediments diagnòstics i terapèutics" subtitleSearch="(87-99)" dtype="36"/> </div>
 		       
    			 </div>
 		</div>
@@ -187,13 +192,11 @@
 
 <!-- ----------------------------------------------------------------------------------------------- -->
 <div data-role="page" id="codisFrequents">
-		<div data-role="header" data-position="fixed"  data-tap-toggle="false">
+				<div data-role="header" data-position="fixed"  data-tap-toggle="false" > 
 			<div data-role="navbar">
 				<ul>
 					<li style="width: 5%">
-						<a href="#main">
-							<img src="images/home.png" style="margin: 5px; width: 100%; height: auto; max-width: 39px;min-width:20px" class="toMain"/>
-						</a>
+						<img src="images/home.png" style="margin: 5px; width: 100%; height: auto; max-width: 39px;min-width:20px" class="toMain"/>
 					</li>
 					<li style="width: 90%; text-align: center;padding-top: 5px;">CIM-09-MC
 							mòbil</li>
@@ -203,24 +206,32 @@
 		</div>
 		<!-- ------- Content--------- -->
 		<div data-role="content">
-
+		 				
+			 <li><a href="#main"><img src="images/logo_ics.png" data-transition="slide"/></a></li> 
+			 <li><a href="#main"><img src="images/hgtip.jpg" data-transition="slide"/></a></li> 
+			<li><a href="#">Procediments</a></li>
+		</ul>
+   			 </div>
 		</div>
 		<!-- ------- End Content----- -->
-		<div data-role="footer" data-position="fixed"  data-tap-toggle="false">
-			<div data-role="navbar">
-					<ul>
-						<li style="width: 5%"></li>
-						<li style="width: 90%; text-align: center">CIM-09-MC mòbil</li>
-						<li style="width: 5%">&nbsp;</li>
-					</ul>
+		<div data-role="footer"  data-position="fixed"  data-tap-toggle="false">		
+		<div data-role="navbar">
+		<ul>
+				
+			 <li><a href="#main"><img src="images/back.png" data-transition="slide"/></a></li> 
+			<li><a href="#">Diagnòstics</a></li> 
+			<li><a href="#">Procediments</a></li>
+		</ul>
+	</div>
+	
 			</div>
-		</div>
 	</div>
 
+
 <!-- ----------------------------------------------------------------------------------------------- -->
 
 <!-- ----------------------------------------------------------------------------------------------- -->
-<div data-role="page" id="favortis">
+<div data-role="page" id="favorits">
 		<div data-role="header" data-position="fixed"  data-tap-toggle="false">
 			<div data-role="navbar">
 				<ul>
@@ -268,19 +279,57 @@
 		<!-- ------- Content--------- -->
 		<div data-role="content">
 		
-			<h1 id="titleSearch">Codis</h1>
-			<span id="subtitleSearch" style="color:red"></span>
+			<h2 id="titleSearch"style="color:#848B8E">Codis</h2>
+			<span id="subtitleSearch" style="color:#848B8E"></span>
 			
 	   			<input type="search" name="search" id="searchInput" data-corners="false"/>
-	   			<button data-role="button" id="searchButon" data-corners="false"> Buscar</button>
-   			<div style="margin:30px 10px 0 10px">
+	   			 
+	   			<button data-role="button" data-inline="true" data-theme="b" data-icon="search" data-iconpos="right" id="searchButon" data-corners="true"> Cercar</button>
+   			<div style="margin:10px 0px 0 10px">
    			
   				<ul data-role='listview' id="contentSearch">
-  				
+  			 
   				</ul>
   				
    			</div>
 		</div>
+		<!-- ------- End Content----- -->
+		<div data-role="footer" data-position="fixed"  data-tap-toggle="false">
+			<div data-role="navbar">
+					<ul>
+						<li style="width: 5%"></li>
+						<li style="width: 90%; text-align: center">CIM-09-MC mòbil</li>
+						<li style="width: 5%">&nbsp;</li>
+					</ul>
+			</div>
+		</div>
+	</div>
+
+<!-- ----------------------------------------------------------------------------------------------- -->
+<!-- ----------------------------------------------------------------------------------------------- -->
+<div data-role="page" id="favorites">
+		<div data-role="header" data-position="fixed"  data-tap-toggle="false">
+			<div data-role="navbar">
+				<ul>
+					<li style="width: 5%"><img src="images/home.png"
+						style="margin: 5px; width: 100%; height: auto; max-width: 39px;min-width:20px" class="toMain"/>
+					</li>
+					<li style="width: 90%; text-align: center;padding-top: 5px;">CIM-09-MC mòbil</li>
+					<li style="width: 5%">&nbsp;</li>
+				</ul>
+			</div>
+		</div>
+		<!-- ------- Content--------- -->
+		<div data-role="content">
+		
+			<h3 id="titleSearch"style="color:#2B6B81">Favorits</h2>
+   			
+			<ul data-role='listview' id="favoritesSearch">
+			
+			</ul>
+  				
+   		</div>
+		
 		<!-- ------- End Content----- -->
 		<div data-role="footer" data-position="fixed"  data-tap-toggle="false">
 			<div data-role="navbar">

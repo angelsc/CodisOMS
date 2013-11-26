@@ -32,6 +32,7 @@
 
  	<access origin="http://127.0.0.1*"/>
     <access origin="http://192.168.0.200*"/>
+     <access origin="http://192.168.43.72*"/>
     <access origin="http://192.168.0.193*"/>
     <access origin="http://217.8.245.251:8181*"/>
     <access origin="http://217.199.167.229*"/>

@@ -1,8 +1,9 @@
 
 (function($) {
-		var server = "192.168.0.193"; // LocalCasa
-	//var server = "217.8.245.251:8181";
-	//var server = "217.199.167.229";  Oriol
+	var server = "192.168.0.193"; 			// LocalCasa
+	//var server = "192.168.43.72"; 		// MOBIL
+//	var server = "217.8.245.251:8181";	// Producció
+	//var server = "217.199.167.229";  		//Oriol
 	
 	var war = "IC9";
 	var servlet ="ctl";
@@ -21,7 +22,7 @@
 				cache: false,
 				timeout:20000,
 				async: true	,
-				success: function (dataCheck){
+				success: function (dataCheck){  // no entra aqui quan remot
 					var firstChar = $.trim(dataCheck).substring(0, 1);
 					var resp;
 					

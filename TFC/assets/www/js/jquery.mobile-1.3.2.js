@@ -5490,7 +5490,8 @@ $.mobile.document.bind( "pagecreate", function( e ) {
 				$page.jqmData( "url" ) !== $.mobile.path.stripHash( location.hash ) &&
 				!leftbtn ) {
 
-				backBtn = $( "<a href='javascript:void(0);' class='ui-btn-left' data-"+ $.mobile.ns +"rel='back' data-"+ $.mobile.ns +"icon='arrow-l'>"+ o.backBtnText +"</a>" )
+			backBtn = $( "<a href='javascript:void(0);' class='ui-btn-left' data-"+ $.mobile.ns +"rel='back' data-"+ $.mobile.ns +"icon='arrow-l'>"+ o.backBtnText +"</a>" )
+				//backBtn = $( "<a href='javascript:void(0);' class='ui-btn-left' data-"+ $.mobile.ns +"rel='back' data-"+ $.mobile.ns +"icon='images/favorite.png'>"+ o.backBtnText +"</a>" )
 					// If theme is provided, override default inheritance
 					.attr( "data-"+ $.mobile.ns +"theme", o.backBtnTheme || thisTheme )
 					.prependTo( $this );
