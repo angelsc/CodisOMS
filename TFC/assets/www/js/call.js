@@ -1,9 +1,9 @@
 
 (function($) {
 	var server = "192.168.0.193"; 			// LocalCasa
-	//var server = "192.168.43.72"; 		// MOBIL
-//	var server = "217.8.245.251:8181";	// Producció
-	//var server = "217.199.167.229";  		//Oriol
+	//  var server = "192.168.43.72"; 		// MOBIL
+	//	var server = "217.8.245.251:8181";		// Producció
+
 	
 	var war = "IC9";
 	var servlet ="ctl";

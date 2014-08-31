@@ -34,8 +34,8 @@
     <access origin="http://192.168.0.200*"/>
      <access origin="http://192.168.43.72*"/>
     <access origin="http://192.168.0.193*"/>
-    <access origin="http://217.8.245.251:8181*"/>
-    <access origin="http://217.199.167.229*"/>
+    <access origin="https://85.214.47.174:8443/IC9*"/>
+    <access origin="https://85.214.47.174:8443"/>
 
     <!-- <content src="http://mysite.com/myapp.html" /> for external pages -->
     <content src="index.html" />

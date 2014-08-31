@@ -1,4 +1,6 @@
-
+/**
+ * gestió manual del resultat de la consulta i la conversió a objectes    
+ */
 var resp = {
 		getCodes : function (data){
 			
@@ -9,10 +11,7 @@ var resp = {
 				ul +=	"<li code='" + d.code + "' class='addFav'>"+
 							"<p>" + d.code +"</p>" + 					 
 							"<b>" + d.desc +"</b>"  +
-//							"<a href='javascript:addToFavorits()' code='" + d.code + "' class='addFav'>" +
-//								"<img src='images/favorites.png' style='width:25px;position:right'>" +
-//							"Afegir a favorits" +
-//							"</a>"	+				 
+
 						" </li>";
 				 
 			}
@@ -26,6 +25,21 @@ var resp = {
 			 });
 			
 			
+		},
+		getCodisFrequents : function (data){
+			
+			var idDiv ="frequentsList"; 					// UL de destí ()
+			var ul = "";
+			for(var i = 0; i <data.vDiag.length; i ++ ){
+				var d = data.vDiag[i];
+				ul +=	"<li>"+
+							"<p>" + d.code +"</p>" + 					 
+							"<b>" + d.desc +"</b>"  +
+												 
+						" </li>";
+				 
+			}
+			$("#" + idDiv).html(ul).listview('refresh');
 		},
 		getFavorites : function (data){
 			

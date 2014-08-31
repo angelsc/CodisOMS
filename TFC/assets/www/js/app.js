@@ -47,7 +47,6 @@ function searchImgProcediments(title, subtitle , dtype){
 }
 
 
-
 /**
  * Busca dentro de los códigos V 
  **/
@@ -119,6 +118,27 @@ function getFavorites(){
 	
 }
 /**
+ * Pàgina favorits 
+ **/
+function getFrequents(){
+
+
+	// change Page
+	// call
+	var _req = req._new("getCodisFrequents");
+		_req.params = $("#searchInput").val();// "AllFreq";
+		_req._dtype = 110;
+	// Canvia de página
+	$.mobile.changePage( "#codisFrequents", { transition: "slide", changeHash: true });
+	UTIL.callUc("Codes.getCodes", _req);
+
+	
+}
+
+
+
+
+/**
  * Afegir a favorits el
  * */
 
@@ -150,7 +170,7 @@ $(function() {
 		 searchImgDiagnostics( $(this).attr("titleSearch") , $(this).attr("subtitleSearch") ,  $(this).attr("dtype")  );
 	 });
 	 $(".search_img_procediments").click(function(){
-		 //*assem a la funció searchImg atributs "custom"
+		 //*Passem a la funció searchImg atributs "custom"
 		 
 		 searchImgProcediments( $(this).attr("titleSearch") , $(this).attr("subtitleSearch") ,  $(this).attr("dtype")  );
 	 });
@@ -171,7 +191,12 @@ $(function() {
 	 $("#searchButon").click(function(){
 		 searchCodes();
 	 });
+	 
 	 $(".toMain").click(function(){
 		 $.mobile.changePage( "#main", {transition: "none",changeHash: true });
 	 });
+	 $(".goBack").click(function(){
+		 history.back();
+	 });
+	 
 });
